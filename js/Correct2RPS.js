@@ -1,12 +1,25 @@
-while (true) {
-let userChoice = prompt(
-"Entrez votre choix (pierre, feuille, ciseaux) :",
-).toLowerCase();
+let userChoice;
 let computerChoice;
 let randomChoice = Math.floor(Math.random() * 3);
-let resultMessage;
+let resultMessage = "";
 
 console.log(Math.floor(Math.random()));
+
+while (true) {
+userChoice = prompt(
+"Entrez votre choix (pierre, feuille, ciseaux) :",
+).toLowerCase();
+if (
+(userChoice === "pierre" ||
+userChoice === "feuille" ||
+userChoice === "ciseaux") &&
+isNaN(userChoice)
+) {
+break;
+} else {
+alert("Choix invalide, veuillez entrer pierre, feuille ou ciseaux.");
+}
+}
 
 if (randomChoice === 0) {
 computerChoice = "pierre";
@@ -26,15 +39,8 @@ resultMessage += "C'est un match nul !";
 (userChoice === "ciseaux" && computerChoice === "feuille")
 ) {
 resultMessage += "Vous avez gagnÃ© !";
-} else if (
-userChoice === "pierre" ||
-userChoice === "feuille" ||
-userChoice === "ciseaux"
-) {
-resultMessage += "Vous avez perdu.";
 } else {
-resultMessage = "Choix invalide, veuillez entrer pierre, feuille ou ciseaux.";
+resultMessage += "Dommage! Vous avez perdu.";
 }
 
 alert(resultMessage);
-}
